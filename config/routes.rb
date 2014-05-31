@@ -1,4 +1,6 @@
 Hotbutton::Application.routes.draw do
+  resources :campaigns
+
   resources :pages
 
   devise_for :users, skip: [:sessions]
