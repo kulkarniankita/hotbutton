@@ -28,9 +28,9 @@ h1.heading-campaign-title = @campaign.hashtags.first.name
 - if @campaign.donation == "1"
   .panel.panel-default
     .panel-body
-      h2 Donate:
+      h2 Contribute:
 
-      div = @campaign.donation_purpose
+      div.show-text-area = @campaign.donation_purpose
 
       script src="https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=freemann.ca@gmail.com"
         data-button="buynow"
@@ -47,7 +47,7 @@ h1.heading-campaign-title = @campaign.hashtags.first.name
     .panel-body
       h2 Subscribe:
 
-      = @campaign.subscription_message
+      div.show-text-area = @campaign.subscription_message
 
       = form_for @subscriber, html: {class: "form-horizontal"} do |f|
         .form-group
