@@ -1,21 +1,17 @@
 class CampaignsController < ApplicationController
   before_action :set_campaign, only: [:show, :edit, :update, :destroy]
 
-  # GET /campaigns
-  # GET /campaigns.json
   def index
     @campaigns = Campaign.all
   end
 
-  # GET /campaigns/1
-  # GET /campaigns/1.json
   def show
     @campaign = Campaign.find(params[:id])
   end
 
-  # GET /campaigns/new
   def new
     @campaign = Campaign.new
+    @hashtag = Hashtag.new
   end
 
   def edit
