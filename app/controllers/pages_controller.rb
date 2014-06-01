@@ -2,6 +2,11 @@ class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
 
   def public_home
+    if Campaign.all.count == 0 && user_signed_in?
+      redirect_to new_campaign_path
+    elsif Campaign.all.count > 0 && user_signed_in?
+      redirect_to Campaign.first
+    end
   end
 
   # GET /pages/new

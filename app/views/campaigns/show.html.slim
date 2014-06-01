@@ -71,6 +71,7 @@ ul.list-group
     span.twitter-timestamp        = t.created_at
     span.twitter-body     = t.text
 
-div class="btn-group"
-  = link_to 'Edit', edit_campaign_path(@campaign), class: "btn btn-default", type: "button"
-  = link_to 'Back', campaigns_path, class: "btn btn-default",  type: "button"
+-if user_signed_in?
+  div class="btn-group"
+    = link_to 'Edit', edit_campaign_path(@campaign), class: "btn btn-default", type: "button"
+    = link_to 'Back', campaigns_path, class: "btn btn-default",  type: "button"

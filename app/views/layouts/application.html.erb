@@ -11,6 +11,11 @@
   <ul class="nav nav-pills">
     <li class="<%= 'active' if current_page?(root_path) %>"><a href = "<%= root_path %> ">Hotbutton</a></li>
     <li class=""><%= link_to "Campaign", Campaign.first %></li>
+    <%- if user_signed_in? %>
+      <li class=""><%= link_to "Log Out", logout_path %> </li>
+    <%- else %>
+      <li class=""><%= link_to "Log In", login_path %> </li>
+    <%- end %>
   </ul>
 
   <p class="alert"><%= alert %></p>
