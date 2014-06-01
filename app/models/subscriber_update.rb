@@ -1,4 +1,16 @@
 class SubscriberUpdate < ActiveRecord::Base
+  after_commit :send_notifications
+
+
+
+def send_notifications
+  short_data = "twitter/sms stuff here"
+  long_data = "email body"
+  subject = "email subject"
+  true
+  # send stuff in here
+end
+
 end
 
 # message
