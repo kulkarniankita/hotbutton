@@ -2,5 +2,14 @@
 p#notice = notice
 h1 = @campaign.hashtags.first.name
 
-= link_to 'Edit', edit_campaign_path(@campaign)
-= link_to 'Back', campaigns_path
+= @campaign.background.body
+
+- if @campaign.donation == "1"
+  h2 "Donations!"
+
+- if @campaign.subscription == "1"
+  h2 "Subscriptions!"
+
+div
+  = link_to 'Edit', edit_campaign_path(@campaign)
+  = link_to 'Back', campaigns_path
