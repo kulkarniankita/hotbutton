@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140601014923) do
+ActiveRecord::Schema.define(version: 20140601081851) do
 
   create_table "backgrounds", force: true do |t|
     t.datetime "created_at"
@@ -56,6 +56,9 @@ ActiveRecord::Schema.define(version: 20140601014923) do
     t.datetime "updated_at"
     t.string   "title"
     t.text     "body"
+    t.text     "short_data"
+    t.text     "long_data"
+    t.text     "subject"
   end
 
   create_table "subscribers", force: true do |t|

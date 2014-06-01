@@ -17,6 +17,7 @@ Hotbutton::Application.routes.draw do
 
   resources :pages
   resources :campaigns
+  resources :subscriber_updates
   root 'pages#public_home'
 
 end
