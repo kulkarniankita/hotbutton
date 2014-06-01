@@ -68,7 +68,7 @@ ul.list-group
   li.list-group-item
 
     span.twitter-username = "@#{t.user.screen_name}"
-    span.twitter-timestamp        = t.created_at
+    span.twitter-timestamp  = t.created_at.strftime("%A, %b %d %I:%M %p")
     span.twitter-body     = t.text
 
 -if user_signed_in?
