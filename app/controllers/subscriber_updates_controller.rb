@@ -46,7 +46,7 @@ class SubscriberUpdatesController < ApplicationController
           "api_key" => "happymonkey9",
           "to" => "override.this@email.com",
           "from" => "tips@hotbutton.com", #from_email
-          "subject" => "HotButton Update: ",
+          "subject" => "HotButton Update: #{@update.campaign.hashtags.first.name}",
           "html" => @update.long_data,
           "x-smtpapi" => JSON.generate(smtpapi_header)
         }
