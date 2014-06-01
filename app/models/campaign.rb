@@ -2,7 +2,7 @@ class Campaign < ActiveRecord::Base
 
   after_initialize :module_list_defaults
 
-  store :config, accessors: [ :enabled_modules, :donation, :subscription ], coder: JSON
+  store :config, accessors: [ :enabled_modules, :donation, :donation_purpose, :subscription, :subscription_message ], coder: JSON
 
   has_one :background
   has_many :links
@@ -10,6 +10,7 @@ class Campaign < ActiveRecord::Base
   has_many :subscribers
   has_many :hashtags
 
+  accepts_nested_attributes_for :background, :links, :hashtags, :subscribers
 
 
   def module? (ui_mod)
