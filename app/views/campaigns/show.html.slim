@@ -16,11 +16,6 @@ h1 = @campaign.hashtags.first.name
       = f.submit
 
 
-- @tweets.each do |t|
-  div = t.user.screen_name
-  div = t.text
-  div = t.created_at
-  br
 
 = @campaign.background.body
 
@@ -52,6 +47,13 @@ h1 = @campaign.hashtags.first.name
     = f.text_field :phone
     = f.hidden_field :campaign_id, :value => @campaign.id
     = f.submit
+
+- @tweets.each do |t|
+  div = t.user.screen_name
+  div = t.text
+  div = t.created_at
+  br
+
 
 div
   = link_to 'Edit', edit_campaign_path(@campaign)
