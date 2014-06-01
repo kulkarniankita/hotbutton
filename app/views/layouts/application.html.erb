@@ -18,14 +18,14 @@
 			<ul class = "nav">
 				<li>All Things<%#= link_to "All Statuses", feed_path %></li>
           		<% if user_signed_in? %>
-            		<li id="activity-feed"><%= link_to "Activity Feed", activities_path %></li>
+            		<li id="activity-feed"><%#= link_to "Activity Feed", activities_path %></li>
           		<% end %>
         	</ul>
         	<ul class="nav pull-right">
           	<% if user_signed_in? %>
             	<li><%#= link_to 'Albums', albums_path(current_user) %></li>
             	<li><%#= link_to 'Friends', user_friendships_path %></li>
-            	<li><%= link_to user.id, edit_user_registration_path %></li>
+            	<li><%= link_to @user_id, edit_user_registration_path %></li>
            		<li><%= link_to "Log Out", logout_path %></li>
           	<% else %>
             	<li><%= link_to "Register", register_path %></li>
