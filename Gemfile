@@ -38,6 +38,14 @@ end
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-paypal'
+
+
+group :development do
+  gem 'annotate'
+end
+
+gem 'slim-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

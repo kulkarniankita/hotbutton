@@ -1,15 +1,7 @@
 class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
 
-  # GET /pages
-  # GET /pages.json
-  def index
-    @pages = Page.all
-  end
-
-  # GET /pages/1
-  # GET /pages/1.json
-  def show
+  def public_home
   end
 
   # GET /pages/new
