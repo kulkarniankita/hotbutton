@@ -2,39 +2,56 @@
 <html>
 <head>
   <title>Hotbutton</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%#= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%#= javascript_include_tag "application", "data-turbolinks-track" => true %>
+ <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class = "navbar navbar-fixed-top">
-	<div class = "navbar-inner">
-		<div class = "container">
-        	<% if user_signed_in? %>
-          		<%= link_to "Hot Button", root_path, class: 'brand' %>
-        	<% else %>
-				 <%= link_to "Hot Button", root_path, class: 'brand' %>
-        	<% end %>
-			<ul class = "nav">
-				<li>All Things<%#= link_to "All Statuses", feed_path %></li>
-          		<% if user_signed_in? %>
-            		<li id="activity-feed"><%#= link_to "Activity Feed", activities_path %></li>
-          		<% end %>
-        	</ul>
-        	<ul class="nav pull-right">
-          	<% if user_signed_in? %>
-            	<li><%#= link_to 'Albums', albums_path(current_user) %></li>
-            	<li><%#= link_to 'Friends', user_friendships_path %></li>
-            	<li><%= link_to @user_id, edit_user_registration_path %></li>
-           		<li><%= link_to "Log Out", logout_path %></li>
-          	<% else %>
-            	<li><%= link_to "Register", register_path %></li>
-            	<li><%= link_to "Log In", login_path %></li>
-          	<% end %>          
-        	</ul>
-		</div>
-	</div>
-</div>
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!--<a class="navbar-brand" href="#">Hot Button</a>-->
+          <%= link_to "Hot Button", root_path, class: "navbar-brand" %>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#feed">Feed</a></li>
+                      <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+            <li><%#= link_to "My Requests", show_submissions_path %></li>
+            <li><%= link_to current_user.email, edit_user_registration_path %></li>
+            <li><%= link_to "Log Out", logout_path %></li>
+          <% else %>
+            <li><%= link_to "Register", register_path %></li>
+            <li><%= link_to "Log In", login_path %></li>
+          <% end %>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+      <div id="google_translate_element" align="right"></div>
+    </div>
+
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
