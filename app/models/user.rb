@@ -16,8 +16,8 @@ def self.find_for_twitter_oauth(auth)
 end
 
   def email_required?
-    # super && provider.blank?
-    false
+    super && provider.blank?
+    # false
   end
 
   def password_required?
