@@ -3,13 +3,17 @@ Hotbutton::Application.routes.draw do
 
   resources :pages
 
-  devise_for :users, skip: [:sessions]
+  devise_for :users, skip: [:sessions],
+  :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
 
   as :user do
     get "/login" => 'devise/sessions#new', as: :new_user_session
     post "/login" => 'devise/sessions#create', as: :user_session
     delete "/logout" => 'devise/sessions#destroy', as: :destroy_user_session
   end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   
