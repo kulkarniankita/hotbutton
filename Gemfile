@@ -41,6 +41,7 @@ gem 'omniauth-paypal'
 
 
 group :development do
+  gem 'pry-rails'
   gem 'annotate'
 end
 
