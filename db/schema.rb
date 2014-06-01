@@ -11,9 +11,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140531215853) do
+ActiveRecord::Schema.define(version: 20140601014923) do
 
-  create_table "pages", force: true do |t|
+  create_table "backgrounds", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "body"
+    t.integer  "campaign_id"
+    t.string   "image"
+  end
+
+  create_table "campaigns", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "activation_date"
+    t.datetime "expiration_date"
+  end
+
+  create_table "donations", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "amount"
+    t.string   "recipient"
+  end
+
+  create_table "hashtags", force: true do |t|
+    t.string   "name"
+    t.integer  "campaign_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "links", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "url"
+    t.string   "description"
+    t.integer  "campaign_id"
+  end
+
+  create_table "subscriber_updates", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.text     "body"
+  end
+
+  create_table "subscribers", force: true do |t|
+    t.string   "email"
+    t.string   "twitter"
+    t.string   "phone"
+    t.integer  "campaign_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

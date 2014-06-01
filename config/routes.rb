@@ -12,9 +12,9 @@ Hotbutton::Application.routes.draw do
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  
+
   # You can have the root of your site routed with "root"
-  root 'pages#index'
+  root 'pages#public_home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -50,7 +50,7 @@ Hotbutton::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'

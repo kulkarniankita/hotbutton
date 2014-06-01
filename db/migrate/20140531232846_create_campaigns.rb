@@ -3,6 +3,9 @@ class CreateCampaigns < ActiveRecord::Migration
     create_table :campaigns do |t|
 
       t.timestamps
+      t.datetime    :activation_date
+      t.datetime    :expiration_date
+
     end
   end
 end
