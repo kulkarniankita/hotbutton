@@ -1,8 +1,6 @@
 
 class SubscriberUpdate < ActiveRecord::Base
-  after_commit :send_notifications
-
-
+  after_commit :send_notifications, :send_emails
 
 def send_notifications
   
@@ -17,6 +15,29 @@ def send_notifications
       ) 
   # send stuff in here
 end
+  
+def send_emails
+  
+  url = "https://sendgrid.com/api/mail.send.json"
+  #to_email
+  smtpapi_header = { 
+    "to" => [ "kulkarni.ankita09@gmail.com"]
+  }
+
+  puts self.long_data
+  response = HTTParty.post url, :body => {
+    "api_user" => "kulkarniankita09",
+    "api_key" => "happymonkey9",
+    "to" => "override.this@email.com",
+    "from" => "tips@hotbutton.com", #from_email
+    "subject" => "HotButton Update: ",
+    "html" => self.long_data,
+    "x-smtpapi" => JSON.generate(smtpapi_header)
+  }
+
+  #response.body
+end
+
 
 end
 
