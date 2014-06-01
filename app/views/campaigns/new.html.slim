@@ -3,7 +3,7 @@ h1 New campaign
 = form_for @campaign do |f|
 
   div
-    = fields_for @hashtag do |h|
+    = f.fields_for :hashtags do |h|
       = h.label :name, "Hashtag:"
       = h.text_field :name
 
@@ -11,9 +11,20 @@ h1 New campaign
     = f.label :donation, "Enable donations?"
     = f.check_box :donation
 
+    = f.label :donation_purpose, "Donation purpose / Instructions"
+    = f.text_area :donation_purpose
+
   div
     = f.label :subscription, "Enable subscriptions?"
     = f.check_box :subscription
+    = f.label :subscription_message, "Subscriber message:"
+    = f.text_area :subscription_message
 
+  div
+    = f.fields_for :background do |bg|
+      = bg.label :body, "background:"
+      = bg.text_area :body
+
+  =f.submit
 
 = link_to 'Back', campaigns_path

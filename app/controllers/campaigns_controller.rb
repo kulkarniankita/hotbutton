@@ -11,15 +11,21 @@ class CampaignsController < ApplicationController
 
   def new
     @campaign = Campaign.new
-    @hashtag = Hashtag.new
+    @hashtag = @campaign.hashtags.build
+    @background = @campaign.build_background
   end
 
   def edit
   end
 
   def create
+    logger.info "Params:"
+    logger.info params
+    logger.info "Campaign params:"
+    logger.info campaign_params
     @campaign = Campaign.new(campaign_params)
 
+    # binding.pry
     respond_to do |format|
       if @campaign.save
         format.html { redirect_to @campaign, notice: 'Campaign was successfully created.' }
@@ -63,6 +69,6 @@ class CampaignsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def campaign_params
-      params[:campaign]
+      params.require(:campaign).permit(:donation_purpose, :donation, :subscription, :subscription_message, background_attributes: [:id, :body], hashtags_attributes: [:id, :name])
     end
 end
