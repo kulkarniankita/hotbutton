@@ -8,11 +8,6 @@ class Campaign < ActiveRecord::Base
 end
 
 
-# name
-# belongs_to user
-# activation date
-# expiration date
-
 # == Schema Information
 #
 # Table name: campaigns

@@ -10,6 +10,7 @@ class CampaignsController < ApplicationController
   # GET /campaigns/1
   # GET /campaigns/1.json
   def show
+    @campaign = Campaign.find(params[:id])
   end
 
   # GET /campaigns/new
@@ -17,12 +18,9 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.new
   end
 
-  # GET /campaigns/1/edit
   def edit
   end
 
-  # POST /campaigns
-  # POST /campaigns.json
   def create
     @campaign = Campaign.new(campaign_params)
 
