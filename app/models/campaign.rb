@@ -10,7 +10,7 @@ class Campaign < ActiveRecord::Base
   has_many :subscribers
   has_many :hashtags
 
-  accepts_nested_attributes_for :background, :links, :hashtags
+  accepts_nested_attributes_for :background, :links, :hashtags, :subscribers
 
 
   def module? (ui_mod)
