@@ -16,6 +16,7 @@
 
 .heading-campaign-title {
   font-weight: bold;
+  color: white;
 }
 
 
@@ -46,4 +47,48 @@ div.checkbox {
 
 .container {
   max-width: 768px;
+}
+
+
+body.body-alt {
+  background: url(image-path('satellite_dishes.jpg')) no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+
+  .main-title {
+    color: white;
+    font-weight: bold;
+    font-size: 72px;
+    margin-bottom: 0;
+  }
+
+  .main-subtitle {
+    color: white;
+    font-weight: light;
+    font-size: 32px;
+    margin-top: 10px;
+    line-height: 0.5;
+  }
+}
+
+body.body-main {
+  background: url(image-path('satellite_dishes_2_copy.jpg')) no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+}
+
+#sitecontainer {
+  background-color: rgba(255,255,255,0.4);
+  min-height: 100vh;
+}
+
+ul.nav {
+  color: white;
+  a{
+    color: white;
+  }
+}
+
+.btn-group {
+  margin:  8px auto;
 }

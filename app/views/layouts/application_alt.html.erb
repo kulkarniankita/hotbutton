@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hotbutton</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class = "body-alt">
+<div class="container" id="sitecontainer-alt">
+  <ul class="nav nav-pills">
+    <li class="<%= 'active' if current_page?(root_path) %>"><a href = "<%= root_path %> ">Hotbutton</a></li>
+    <li class=""><%= link_to "Campaign", Campaign.first %></li>
+    <%- if user_signed_in? %>
+      <li class=""><%= link_to "Log Out", logout_path %> </li>
+    <%- else %>
+      <li class=""><%= link_to "Log In", login_path %> </li>
+    <%- end %>
+  </ul>
+
+  <p class="alert"><%= alert %></p>
+
+
+  <h1 class="main-title">Hotbutton</h1>
+  <h2 class="main-subtitle">Signal to action</h2>
+
+  <%= yield %>
+</div>
+</body>
+</html>

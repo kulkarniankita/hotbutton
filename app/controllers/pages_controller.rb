@@ -6,7 +6,10 @@ class PagesController < ApplicationController
       redirect_to new_campaign_path
     elsif Campaign.all.count > 0 && user_signed_in?
       redirect_to Campaign.first
+    else
+      render layout: "application_alt"
     end
+
   end
 
   # GET /pages/new
