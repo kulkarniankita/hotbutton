@@ -1,5 +1,9 @@
 <%= form_for @update do | f | %>
+<%= f.label :subject %>
+<%= f.text_field :subject %>
 <%= f.label :short_data %>
 <%= f.text_field :short_data %>
+<%= f.label :long_data %>
+<%= f.text_area :long_data %>
 <%= f.submit %>
 <%- end %>
