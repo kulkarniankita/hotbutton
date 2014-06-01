@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20140601081851) do
     t.datetime "updated_at"
     t.datetime "activation_date"
     t.datetime "expiration_date"
+    t.text     "config"
   end
 
   create_table "donations", force: true do |t|
