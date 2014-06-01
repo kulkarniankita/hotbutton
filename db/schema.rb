@@ -24,8 +24,6 @@ ActiveRecord::Schema.define(version: 20140601014923) do
   create_table "campaigns", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "activation_date"
-    t.datetime "expiration_date"
   end
 
   create_table "donations", force: true do |t|
@@ -49,6 +47,11 @@ ActiveRecord::Schema.define(version: 20140601014923) do
     t.string   "url"
     t.string   "description"
     t.integer  "campaign_id"
+  end
+
+  create_table "pages", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "subscriber_updates", force: true do |t|
