@@ -7,35 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class = "navbar navbar-fixed-top">
-	<div class = "navbar-inner">
-		<div class = "container">
-        	<% if user_signed_in? %>
-          		<%= link_to "Hot Button", root_path, class: 'brand' %>
-        	<% else %>
-				 <%= link_to "Hot Button", root_path, class: 'brand' %>
-        	<% end %>
-			<!-- <ul class = "nav"> -->
-				<!-- <li>All Things<%#= link_to "All Statuses", feed_path %></li> -->
-          		<!-- <% if user_signed_in? %> -->
-            		<!-- <li id="activity-feed"><%#= link_to "Activity Feed", activities_path %></li> -->
-          		<!-- <% end %> -->
-        	</ul>
-        	<ul class="nav pull-right">
-          	<% if user_signed_in? %>
-            	<!-- <li><%= link_to @user_id, edit_user_registration_path %></li> -->
-           		<li><%= link_to "Log Out", logout_path %></li>
-          	<% else %>
-            	<li><%= link_to "Register", register_path %></li>
-            	<li><%= link_to "Log In", login_path %></li>
-          	<% end %>
-        	</ul>
-		</div>
-	</div>
+<div class="container">
+  <ul class="nav nav-pills">
+    <li class="<%= 'active' if current_page?(root_path) %>"><a href = "<%= root_path %> ">Hotbutton</a></li>
+    <li class=""><%= link_to "Campaign", Campaign.first %></li>
+  </ul>
+
+  <p class="alert"><%= alert %></p>
+
+  <%= yield %>
 </div>
-<p class="alert"><%= alert %></p>
-
-<%= yield %>
-
 </body>
 </html>

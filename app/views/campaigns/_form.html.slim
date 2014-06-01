@@ -1,34 +1,52 @@
 
 = form_for @campaign do |f|
   - if @campaign.errors.any?
-    div#error_explanation
-      h2 = "#{pluralize(@campaign.errors.count, "error")} prohibited this campaign from being saved:"
+    .panel.panel-default
+      .panel-heading
 
-      ul
-        - @campaign.errors.full_messages.each do |msg|
-          li = msg
+        div#error_explanation
+          h2 = "#{pluralize(@campaign.errors.count, "error")} prohibited this campaign from being saved:"
 
-  div
-    = f.fields_for :hashtags do |h|
-      = h.label :name, "Hashtag:"
-      = h.text_field :name
+          ul
+            - @campaign.errors.full_messages.each do |msg|
+              li = msg
 
-  div
-    = f.label :donation, "Enable donations?"
-    = f.check_box :donation
+  .panel.panel-default
+    .panel-body
+      = f.fields_for :hashtags do |h|
+        .form-group
+          = h.label :name, "Hashtag:", class: "control-label"
+          = h.text_field :name, class: "form-control"
 
-    = f.label :donation_purpose, "Donation purpose / Instructions"
-    = f.text_area :donation_purpose
+  .panel.panel-default
+    .panel-body
+      .form-group
+        .checkbox
+          /= f.label :donation, "Enable donations?", class: "control-label"
+          label
+            = f.check_box :donation
+            span.checkbox-label Enable donations?
 
-  div
-    = f.label :subscription, "Enable subscriptions?"
-    = f.check_box :subscription
-    = f.label :subscription_message, "Subscriber message:"
-    = f.text_area :subscription_message
+      .form-group
+        = f.label :donation_purpose, "Donation purpose / Instructions", class: "control-label"
+        = f.text_area :donation_purpose, class: "form-control"
 
-  div
-    = f.fields_for :background do |bg|
-      = bg.label :body, "background:"
-      = bg.text_area :body
+  .panel.panel-default
+    .panel-body
+      .checkbox
+        / = f.label :subscription, "Enable subscriptions?"
+        label
+          = f.check_box :subscription
+          span.checkbox-label Enable subscriptions?
+      .form-group
+        = f.label :subscription_message, "Subscriber message:", class: "control-label"
+        = f.text_area :subscription_message, class: "form-control", rows: "6"
 
-  =f.submit
+  .panel.panel-default
+    .panel-body
+      = f.fields_for :background do |bg|
+        .form-group
+          = bg.label :body, "Provide some background information:", class: "control-label"
+          = bg.text_area :body, class: "form-control", rows: "6"
+
+  = f.button "Create campaign", class: "btn btn-primary btn-lg"

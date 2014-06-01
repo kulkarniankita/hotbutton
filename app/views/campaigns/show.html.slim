@@ -1,60 +1,76 @@
 
 p#notice = notice
-h1 = @campaign.hashtags.first.name
+h1.heading-campaign-title = @campaign.hashtags.first.name
 
 -if user_signed_in?
-  div
-    = form_for @subscriber_update do |f|
-      h2 Send update
-      = f.label :short_data, "Short message for text and Twitter:"
-      = f.text_field :short_data
-      / = f.label :subject "Emai"
-      / = f.text_field :subject
-      = f.label :long_data, "Full-length message for email:"
-      = f.text_area :long_data
-      = f.hidden_field :campaign_id, :value => @campaign.id
-      = f.submit
+  = form_for @subscriber_update do |f|
+    .panel.panel-default
+      .panel-heading
+        h1.panel-title Send update
+      .panel-body
+        .form-group
+          = f.label :short_data, "Short message for text and Twitter:", class: "control-label"
+          = f.text_field :short_data, class: "form-control"
+        / = f.label :subject "Emai"
+        / = f.text_field :subject
+        .form-group
+          = f.label :long_data, "Full-length message for email:", class: "control-label"
+          = f.text_area :long_data, class: "form-control", rows: "6"
+
+        = f.hidden_field :campaign_id, :value => @campaign.id
+        = f.button "Send update", class: "btn btn-primary"
 
 
-
-= @campaign.background.body
+.panel.panel-default
+  .panel-body
+    = @campaign.background.body
 
 - if @campaign.donation == "1"
+  .panel.panel-default
+    .panel-body
+      h2 Donate:
 
-  h2 Donate:
+      div = @campaign.donation_purpose
 
-  div = @campaign.donation_purpose
-
-  script src="https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=freemann.ca@gmail.com"
-    data-button="buynow"
-    data-name="Donate to Cause"
-    data-currency="CAD"
-    data-shipping="0"
-    data-tax="0"
-    data-callback="http://localhost:3000/public_home.html.erb"
-    data-env="sandbox"
+      script src="https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=freemann.ca@gmail.com"
+        data-button="buynow"
+        data-name="Donate to Cause"
+        data-currency="CAD"
+        data-shipping="0"
+        data-tax="0"
+        data-callback="http://localhost:3000/public_home.html.erb"
+        data-env="sandbox"
 
 
 - if @campaign.subscription == "1"
-  h2 Subscribe:
+  .panel.panel-default
+    .panel-body
+      h2 Subscribe:
 
-  div = @campaign.subscription_message
+      = @campaign.subscription_message
 
-  = form_for @subscriber do |f|
-    = f.label :email
-    = f.text_field :email
-    = f.label :phone
-    = f.text_field :phone
-    = f.hidden_field :campaign_id, :value => @campaign.id
-    = f.submit
+      = form_for @subscriber, html: {class: "form-horizontal"} do |f|
+        .form-group
+          = f.label :email, "Email:", class: "col-sm-2 control-label"
+          .col-sm-10
+            = f.text_field :email, class: "form-control"
+        .form-group
+          = f.label :phone, "Phone No.(SMS): ", class: "col-sm-2 control-label"
+          .col-sm-10
+            = f.text_field :phone, class: "form-control"
+        = f.hidden_field :campaign_id, :value => @campaign.id
+        .form-group
+          .col-sm-offset-2.col-sm-10
+            = f.button "Subscribe", class: "btn btn-primary"
 
+ul.list-group
 - @tweets.each do |t|
-  div = t.user.screen_name
-  div = t.text
-  div = t.created_at
-  br
+  li.list-group-item
 
+    span.twitter-username = "@#{t.user.screen_name}"
+    span.twitter-timestamp        = t.created_at
+    span.twitter-body     = t.text
 
-div
-  = link_to 'Edit', edit_campaign_path(@campaign)
-  = link_to 'Back', campaigns_path
+div class="btn-group"
+  = link_to 'Edit', edit_campaign_path(@campaign), class: "btn btn-default", type: "button"
+  = link_to 'Back', campaigns_path, class: "btn btn-default",  type: "button"
