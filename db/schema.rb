@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140601081851) do
+ActiveRecord::Schema.define(version: 20140601124503) do
 
   create_table "backgrounds", force: true do |t|
     t.datetime "created_at"
@@ -60,7 +60,10 @@ ActiveRecord::Schema.define(version: 20140601081851) do
     t.text     "short_data"
     t.text     "long_data"
     t.text     "subject"
+    t.integer  "campaign_id"
   end
+
+  add_index "subscriber_updates", ["campaign_id"], name: "index_subscriber_updates_on_campaign_id"
 
   create_table "subscribers", force: true do |t|
     t.string   "email"

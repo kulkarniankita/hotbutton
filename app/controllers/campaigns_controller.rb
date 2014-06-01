@@ -8,6 +8,7 @@ class CampaignsController < ApplicationController
   def show
     @campaign = Campaign.find(params[:id])
     @subscriber = @campaign.subscribers.build
+    @subscriber_update = @campaign.subscriber_updates.build
 
     client = Twitter::REST::Client.new do |config|
       config.consumer_key = "kia2Amb3nAzR5zmBBlD1N9WiU"

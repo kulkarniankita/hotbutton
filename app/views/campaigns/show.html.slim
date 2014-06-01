@@ -2,6 +2,20 @@
 p#notice = notice
 h1 = @campaign.hashtags.first.name
 
+-if user_signed_in?
+  div
+    = form_for @subscriber_update do |f|
+      h2 Send update
+      = f.label :short_data, "Short message for text and Twitter:"
+      = f.text_field :short_data
+      / = f.label :subject "Emai"
+      / = f.text_field :subject
+      = f.label :long_data, "Full-length message for email:"
+      = f.text_area :long_data
+      = f.hidden_field :campaign_id, :value => @campaign.id
+      = f.submit
+
+
 - @tweets.each do |t|
   div = t.user.screen_name
   div = t.text
